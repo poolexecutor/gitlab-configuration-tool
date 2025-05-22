@@ -1,4 +1,4 @@
-# GitLab Project Configuration Tool
+# GitLab Configuration Tool
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -32,7 +32,7 @@ protection rules and approval workflows across multiple projects.
 1. Clone this repository:
    ```
    git clone <repository-url>
-   cd configure_projects_in_group
+   cd gitlab-configuration-tool
    ```
 
 2. Install the required dependencies:
