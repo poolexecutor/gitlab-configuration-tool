@@ -1,0 +1,59 @@
+# Branch Protection Configuration Template
+# This file serves as a template for configuring branch protection rules in GitLab projects.
+# Copy this file to branch_protection.yml and customize it for your specific needs.
+
+# GitLab connection parameters
+gitlab:
+  url: https://gitlab.com  # Your GitLab instance URL
+  token: ""                # Your GitLab access token with API scope
+  group_id: ""             # Your GitLab group ID (optional - can be selected from menu)
+
+# GitLab access levels
+# These values correspond to GitLab's access level constants
+access_levels:
+  no_access: 0             # No access
+  guest: 10                # Guest access
+  reporter: 20             # Reporter access
+  developer: 30            # Developer access
+  maintainer: 40           # Maintainer access
+  owner: 50                # Owner access
+
+# Core branches to create from 'main'
+# These branches will be created and protected in each selected project
+core_branches:
+  - name: main             # Branch name
+    ref: main              # Reference branch to create from
+    push_access_level: maintainer    # Who can push directly to this branch
+    merge_access_level: maintainer   # Who can merge to this branch
+    approval_required: true          # Whether merge requests require approval
+
+  - name: stage            # Staging branch
+    ref: main
+    push_access_level: maintainer
+    merge_access_level: maintainer
+    approval_required: true
+
+  - name: develop          # Development branch
+    ref: main
+    push_access_level: developer
+    merge_access_level: developer
+    approval_required: false
+
+# Wildcard branch patterns
+# These patterns will be protected in each selected project
+wildcard_branches:
+  - pattern: feature/*     # Feature branches
+    push_access_level: developer
+    merge_access_level: developer
+
+  - pattern: bugfix/*      # Bug fix branches
+    push_access_level: developer
+    merge_access_level: developer
+
+  - pattern: hotfix/*      # Hot fix branches
+    push_access_level: developer
+    merge_access_level: developer
+
+  - pattern: release/*     # Release branches
+    push_access_level: developer
+    merge_access_level: developer
